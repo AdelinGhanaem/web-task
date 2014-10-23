@@ -1,6 +1,6 @@
 package com.cayetano.core;
 
-import com.cayetano.persistense.UserConnectionsRepository;
+import com.cayetano.persistense.ClientConnectionsRepository;
 import com.cayetano.persistense.entities.ClientConnectionEntity;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
@@ -22,15 +22,15 @@ public class ClientConnectionsServiceImplTest {
 
     private ClientConnectionsServiceImpl service;
 
-    private UserConnectionsRepository userConnectionsRepository;
+    private ClientConnectionsRepository clientConnectionsRepository;
 
     private Adapter<ClientConnection, ClientConnectionEntity> adapter;
 
     @Before
     public void setUp() throws Exception {
-        userConnectionsRepository = context.mock(UserConnectionsRepository.class);
+        clientConnectionsRepository = context.mock(ClientConnectionsRepository.class);
         adapter = context.mock(Adapter.class);
-        service = new ClientConnectionsServiceImpl(userConnectionsRepository, adapter);
+        service = new ClientConnectionsServiceImpl(clientConnectionsRepository, adapter);
     }
 
 
@@ -43,7 +43,7 @@ public class ClientConnectionsServiceImplTest {
         context.checking(new Expectations() {{
             oneOf(adapter).from(someConnection);
             will(returnValue(someEntity));
-            oneOf(userConnectionsRepository).saveConnection(someEntity);
+            oneOf(clientConnectionsRepository).saveConnection(someEntity);
         }});
 
         service.saveClientConnection(someConnection);
@@ -63,7 +63,7 @@ public class ClientConnectionsServiceImplTest {
         }};
 
         context.checking(new Expectations() {{
-            oneOf(userConnectionsRepository).getConnections();
+            oneOf(clientConnectionsRepository).getConnections();
             will(returnValue(expectedEntitiesList));
             oneOf(adapter).to(expectedEntitiesList);
             will(returnValue(expectedList));
@@ -89,7 +89,7 @@ public class ClientConnectionsServiceImplTest {
         }};
 
         context.checking(new Expectations() {{
-            oneOf(userConnectionsRepository).getConnectionBetween(firstDate.getTime(), second.getTime());
+            oneOf(clientConnectionsRepository).getConnectionBetween(firstDate.getTime(), second.getTime());
             will(returnValue(expectedEntitiesList));
             oneOf(adapter).to(expectedEntitiesList);
             will(returnValue(expectedList));

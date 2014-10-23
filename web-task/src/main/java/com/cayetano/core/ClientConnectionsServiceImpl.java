@@ -1,6 +1,6 @@
 package com.cayetano.core;
 
-import com.cayetano.persistense.UserConnectionsRepository;
+import com.cayetano.persistense.ClientConnectionsRepository;
 import com.cayetano.persistense.entities.ClientConnectionEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,12 +14,12 @@ import java.util.List;
 @Component
 class ClientConnectionsServiceImpl implements ClientConnectionsService {
 
-    private UserConnectionsRepository repository;
+    private ClientConnectionsRepository repository;
     private Adapter<ClientConnection, ClientConnectionEntity> adapter;
 
 
     @Autowired
-    public ClientConnectionsServiceImpl(UserConnectionsRepository repository, Adapter<ClientConnection, ClientConnectionEntity> adapter) {
+    public ClientConnectionsServiceImpl(ClientConnectionsRepository repository, Adapter<ClientConnection, ClientConnectionEntity> adapter) {
         this.repository = repository;
         this.adapter = adapter;
     }

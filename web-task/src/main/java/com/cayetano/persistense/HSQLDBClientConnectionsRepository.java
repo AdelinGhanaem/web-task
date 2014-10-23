@@ -1,6 +1,5 @@
 package com.cayetano.persistense;
 
-import com.cayetano.core.ClientConnection;
 import com.cayetano.persistense.entities.ClientConnectionEntity;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -9,20 +8,18 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
  * Created by adelin.ghanayem@gmail.com
  */
 @Component
-class HSQLDBUserConnectionsRepository implements UserConnectionsRepository {
+class HSQLDBClientConnectionsRepository implements ClientConnectionsRepository {
 
     private SessionFactory sessionFactory;
 
     @Autowired
-    HSQLDBUserConnectionsRepository(SessionFactory sessionFactory) {
+    HSQLDBClientConnectionsRepository(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 

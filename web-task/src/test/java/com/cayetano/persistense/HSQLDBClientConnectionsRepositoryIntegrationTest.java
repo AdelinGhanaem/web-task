@@ -16,10 +16,10 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {PersistenceConfigurations.class})
-public class HSQLDBUserConnectionsRepositoryIntegrationTest {
+public class HSQLDBClientConnectionsRepositoryIntegrationTest {
 
     @Autowired
-    private UserConnectionsRepository repository;
+    private ClientConnectionsRepository repository;
 
     @Test
     public void returnsWhatWasSavedOfClientConnections() {
@@ -70,12 +70,6 @@ public class HSQLDBUserConnectionsRepositoryIntegrationTest {
         assertThat(expected.size(), is(3));
 
     }
-
-    @Test
-    public void throwsExceptionsWhenErrorOccurres() {
-
-    }
-
 
     private Date createDate(int year, int month, int day) {
         Calendar calendar = Calendar.getInstance();
