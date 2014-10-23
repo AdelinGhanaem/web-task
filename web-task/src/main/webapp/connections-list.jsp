@@ -18,8 +18,6 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <title>Cayetano Web-Task</title>
 </head>
 <body>
@@ -46,7 +44,7 @@
                     <input type="submit" class="btn btn-default"/>
 
                     <c:if test="${message != null && message != \"\"}">
-                        <div class="alert alert-danger" style="padding-top:5px;" role="alert"><c:out value="${message}"/></div>
+                        <div class="alert alert-danger" style="margin-top:5px;" role="alert"><c:out value="${message}"/></div>
                     </c:if>
                 </form>
             </div>
