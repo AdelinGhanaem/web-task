@@ -45,17 +45,17 @@ public class HSQLDBUserConnectionsRepositoryIntegrationTest {
         entity1.setClientBrowser("1");
 
         ClientConnectionEntity entity2 = new ClientConnectionEntity();
-        entity1.setConnectionTime(2l);
-        entity1.setClientBrowser("2");
+        entity2.setConnectionTime(2l);
+        entity2.setClientBrowser("2");
 
         ClientConnectionEntity entity3 = new ClientConnectionEntity();
-        entity1.setConnectionTime(2l);
-        entity1.setClientBrowser("2");
+        entity3.setConnectionTime(2l);
+        entity3.setClientBrowser("2");
 
 
         ClientConnectionEntity entity4 = new ClientConnectionEntity();
-        entity1.setConnectionTime(4l);
-        entity1.setClientBrowser("4");
+        entity4.setConnectionTime(4l);
+        entity4.setClientBrowser("4");
 
 
         repository.saveConnection(entity1);
@@ -67,7 +67,7 @@ public class HSQLDBUserConnectionsRepositoryIntegrationTest {
 
         List<ClientConnectionEntity> expected =  repository.getConnectionBetween(2l, 4l);
 
-        assertThat(expected.size(), is(2));
+        assertThat(expected.size(), is(3));
 
     }
 
