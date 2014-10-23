@@ -3,6 +3,7 @@ package com.cayetano.core;
 import java.util.Date;
 
 /**
+ * This class represents a client connection to the web server
  * Created by adelin.ghanayem@gmail.com
  */
 public final class ClientConnection {

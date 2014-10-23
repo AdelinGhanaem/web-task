@@ -32,16 +32,18 @@ class HSQLDBUserConnectionsRepository implements UserConnectionsRepository {
 
         Session session = sessionFactory.openSession();
 
-
-        Transaction transaction = session.beginTransaction();
-
-
-        session.persist(entity);
+        try {
+            Transaction transaction = session.beginTransaction();
+            session.persist(entity);
 
 
-        transaction.commit();
+            transaction.commit();
+        } finally {
+            session.close();
 
-        session.close();
+        }
+
+
     }
 
     @Override
@@ -55,12 +57,19 @@ class HSQLDBUserConnectionsRepository implements UserConnectionsRepository {
     @Override
     public List<ClientConnectionEntity> getConnectionBetween(long start, long end) {
         Session session = sessionFactory.openSession();
-        Query query = session.createQuery("SELECT c FROM com.cayetano.persistense.entities.ClientConnectionEntity c" +
-                " WHERE c.connectionTime >= :start  and  c.connectionTime <= :end ")
-                .setParameter("start", start)
-                .setParameter("end", end);
-        List<ClientConnectionEntity> list = query.list();
-        session.close();
-        return list;
+        try {
+            Query query = session.createQuery("FROM com.cayetano.persistense.entities.ClientConnectionEntity c" +
+                    " WHERE c.connectionTime between :start and :end ")
+                    .setParameter("start", start)
+                    .setParameter("end", end);
+            List<ClientConnectionEntity> list = query.list();
+            return list;
+
+        } finally {
+
+            session.close();
+        }
+
+
     }
 }

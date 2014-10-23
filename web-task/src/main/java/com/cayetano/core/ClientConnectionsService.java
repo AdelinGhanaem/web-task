@@ -9,16 +9,24 @@ import java.util.List;
 public interface ClientConnectionsService {
 
     /**
+     * Returns all {@link com.cayetano.core.ClientConnection}
      *
-     * @return
+     * @return A List containing all {@link com.cayetano.core.ClientConnection}s until this moment.
      */
     List<ClientConnection> getAllConnections();
 
     /**
+     * Save a {@link com.cayetano.core.ClientConnection}
      *
      * @param clientConnection
      */
     void saveClientConnection(ClientConnection clientConnection);
 
+    /**
+     * Returnes a {@link com.cayetano.core.ClientConnection}
+     * @param start start date
+     * @param end    end date
+     * @return A List containing all {@link com.cayetano.core.ClientConnection} between the provided dates
+     */
     List<ClientConnection> getConnectionBetween(Date start, Date end);
 }
