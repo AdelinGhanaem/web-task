@@ -2,6 +2,7 @@ package com.cayetano.persistense;
 
 import com.cayetano.core.ClientConnection;
 import com.cayetano.persistense.entities.ClientConnectionEntity;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -46,7 +47,7 @@ class HSQLDBUserConnectionsRepository implements UserConnectionsRepository {
     @Override
     public List<ClientConnectionEntity> getConnections() {
         Session session = sessionFactory.openSession();
-        List<ClientConnectionEntity>  entities = session.createQuery("from ClientConnectionEntity").list();
+        List<ClientConnectionEntity> entities = session.createQuery("from ClientConnectionEntity").list();
         session.close();
         return entities;
     }
@@ -54,12 +55,12 @@ class HSQLDBUserConnectionsRepository implements UserConnectionsRepository {
     @Override
     public List<ClientConnectionEntity> getConnectionBetween(Date start, Date end) {
         Session session = sessionFactory.openSession();
-        List<ClientConnectionEntity>  entities = session.createQuery("from ClientConnectionEntity" +
-                " where connectionTime >= :start and connectionTime <= :end")
-                .setDate("start",start)
-                .setDate("end",end)
-                .list();
+        Query query = session.createQuery("from ClientConnectionEntity" +
+                " where connectionTime between :start  and  :end")
+                .setParameter("start", new java.sql.Date(start.getTime()))
+                .setParameter("end", new java.sql.Date(end.getTime()));
+        List<ClientConnectionEntity> list = query.list();
         session.close();
-        return entities;
+        return list;
     }
 }
