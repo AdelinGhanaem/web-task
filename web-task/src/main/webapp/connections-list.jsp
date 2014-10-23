@@ -34,7 +34,7 @@
         <div class="panel-body">
 
             <div id="filter" style="text-align: left">
-                <form role="form" action="between" method="get" style="width: 30%;">
+                <form role="form" action="/web-task/connections-list/between" method="get" style="width: 30%;">
                     <div class="form-group">
                         <input name="startDate" type="text"  class="form-control"  placeholder="Start Date">
                     </div>
@@ -44,6 +44,10 @@
                     </div>
 
                     <input type="submit" class="btn btn-default"/>
+
+                    <c:if test="${message != null && message != \"\"}">
+                        <div class="alert alert-danger" style="padding-top:5px;" role="alert"><c:out value="${message}"/></div>
+                    </c:if>
                 </form>
             </div>
             <div id="connections_table">

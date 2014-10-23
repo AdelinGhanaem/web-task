@@ -5,9 +5,11 @@ import com.cayetano.core.ClientConnectionsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -63,9 +65,16 @@ public class ClientConnectionsController {
     }
 
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public String test() {
-        return "connections-list";
+
+
+
+    @ExceptionHandler(Exception.class)
+    public ModelAndView handleAllException(Exception ex) {
+
+        ModelAndView model = new ModelAndView("error");
+        model.addObject("message", "An error occurred while trying to serve your request ! \n Please try again later or contact the admin admin@admin.com");
+        return model;
+
     }
 
     private Date formate(String s) throws ParseException {
@@ -73,5 +82,7 @@ public class ClientConnectionsController {
             return SIMPLE_DATE_FORMAT.parse(s); // SimpleDateFormat is not thread safe !
         }
     }
+
+
 
 }
