@@ -11,39 +11,66 @@
 
 <html>
 <head>
-    <title></title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <title>Cayetano Web-Task</title>
 </head>
 <body>
 
 
-<div id="main_wrapper">
-    <div id="filter">
-        <form action="between" method="get">
-            <input name="startDate" type="text"/>
-            <input name="endDate" type="text"/>
-            <input type="submit"/>
-        </form>
-    </div>
-    <div id="connections_table">
+<div id="main_wrapper" style="width: 90%;margin: auto">
 
-        <table>
-            <thead>
-            <tr>
-                <th>Id:</th>
-                <th>Client Agent Details</th>
-                <th>Connection Time</th>
-            </tr>
-            </thead>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Clients Connections</h3>
+        </div>
+        <div class="panel-body">
 
-            <c:forEach var="connection" items="${connections}">
-                <tr>
-                    <td>${connection.connectionSource}</td>
-                    <td>${connection.clientAgent}</td>
-                    <td>${connection.connectionTime}</td>
-                </tr>
-            </c:forEach>
-        </table>
+            <div id="filter" style="text-align: left">
+                <form role="form" action="between" method="get" style="width: 30%;">
+                    <div class="form-group">
+                        <input name="startDate" type="text"  class="form-control"  placeholder="Start Date">
+                    </div>
+
+                    <div class="form-group">
+                        <input name="endDate" type="text" class="form-control"  placeholder="End Date">
+                    </div>
+
+                    <input type="submit" class="btn btn-default"/>
+                </form>
+            </div>
+            <div id="connections_table">
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Ip:</th>
+                        <th>Client Agent Details</th>
+                        <th>Connection Time</th>
+                    </tr>
+                    </thead>
+
+                    <c:forEach var="connection" items="${connections}">
+                        <tr>
+                            <td>${connection.connectionSource}</td>
+                            <td>${connection.clientAgent}</td>
+                            <td>${connection.connectionTime}</td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </div>
+        </div>
     </div>
+
+
+
 
 </div>
 </body>

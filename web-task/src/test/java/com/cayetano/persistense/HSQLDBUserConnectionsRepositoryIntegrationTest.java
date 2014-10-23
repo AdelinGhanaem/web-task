@@ -9,6 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -40,25 +41,37 @@ public class HSQLDBUserConnectionsRepositoryIntegrationTest {
     public void returnsClientConnectionsBetweenTwoDates() {
 
         ClientConnectionEntity entity1 = new ClientConnectionEntity();
-        entity1.setConnectionTime(createDate(2012, 9, 7));
+        entity1.setConnectionTime(1l);
         entity1.setClientBrowser("1");
 
         ClientConnectionEntity entity2 = new ClientConnectionEntity();
-        entity1.setConnectionTime(createDate(2014, 6, 11));
+        entity1.setConnectionTime(2l);
         entity1.setClientBrowser("2");
 
         ClientConnectionEntity entity3 = new ClientConnectionEntity();
-        entity1.setConnectionTime(createDate(2014, 7, 11));
-        entity1.setClientBrowser("3");
+        entity1.setConnectionTime(2l);
+        entity1.setClientBrowser("2");
 
+
+        ClientConnectionEntity entity4 = new ClientConnectionEntity();
+        entity1.setConnectionTime(4l);
+        entity1.setClientBrowser("4");
+
+        ClientConnectionEntity entity5 = new ClientConnectionEntity();
+        entity1.setConnectionTime(5l);
+        entity1.setClientBrowser("5");
 
         repository.saveConnection(entity1);
         repository.saveConnection(entity2);
         repository.saveConnection(entity3);
+        repository.saveConnection(entity4);
+        repository.saveConnection(entity5);
 
-        assertThat(repository.getConnections().size(),is(3));
+        assertThat(repository.getConnections().size(),is(5));
 
-        assertThat(repository.getConnectionBetween(createDate(2010, 1, 1), createDate(2014, 1,3)).size(), is(2));
+        List<ClientConnectionEntity> expected =  repository.getConnectionBetween(1l, 4l);
+
+        assertThat(expected.size(), is(2));
 
     }
 

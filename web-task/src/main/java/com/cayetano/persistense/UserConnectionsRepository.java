@@ -20,5 +20,5 @@ public interface UserConnectionsRepository {
 
     List<ClientConnectionEntity> getConnections();
 
-    List<ClientConnectionEntity> getConnectionBetween(Date start, Date end);
+    List<ClientConnectionEntity> getConnectionBetween(long start, long end);
 }

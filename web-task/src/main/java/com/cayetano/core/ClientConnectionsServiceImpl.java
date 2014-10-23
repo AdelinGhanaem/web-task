@@ -36,7 +36,7 @@ class ClientConnectionsServiceImpl implements ClientConnectionsService {
 
     @Override
     public List<ClientConnection> getConnectionBetween(Date start, Date end) {
-        return adapter.to(repository.getConnectionBetween(start,end));
+        return adapter.to(repository.getConnectionBetween(start.getTime(),end.getTime()));
     }
 
 }

@@ -20,7 +20,7 @@ public class ClientConnectionEntity {
     private String connectionSource;
 
     @Column(name = "connectionTime")
-    private Date connectionTime;
+    private long connectionTime;
 
     @Column(name = "clientBrowser")
     private String clientBrowser;
@@ -29,7 +29,7 @@ public class ClientConnectionEntity {
         return connectionSource;
     }
 
-    public Date getConnectionTime() {
+    public long getConnectionTime() {
         return connectionTime;
     }
 
@@ -49,7 +49,7 @@ public class ClientConnectionEntity {
         this.connectionSource = connectionSource;
     }
 
-    public void setConnectionTime(Date connectionTime) {
+    public void setConnectionTime(long connectionTime) {
         this.connectionTime = connectionTime;
     }
 

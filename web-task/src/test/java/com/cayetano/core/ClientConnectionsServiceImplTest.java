@@ -88,7 +88,7 @@ public class ClientConnectionsServiceImplTest {
         }};
 
         context.checking(new Expectations() {{
-            oneOf(userConnectionsRepository).getConnectionBetween(firstDate, second);
+//            oneOf(userConnectionsRepository).getConnectionBetween(firstDate, second);
             will(returnValue(expectedEntitiesList));
             oneOf(adapter).to(expectedEntitiesList);
             will(returnValue(expectedList));

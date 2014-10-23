@@ -29,6 +29,11 @@ public class WebConfigurations extends WebMvcConfigurerAdapter {
         registry.addInterceptor(interceptor).addPathPatterns("/", "/*", "/connections-list");
     }
 
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+    }
+
     @Bean
     public ViewResolver getViewResolver(){
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();

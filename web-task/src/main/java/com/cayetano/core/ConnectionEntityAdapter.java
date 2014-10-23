@@ -4,6 +4,7 @@ import com.cayetano.persistense.entities.ClientConnectionEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public class ConnectionEntityAdapter implements Adapter<ClientConnection, Client
         for (ClientConnectionEntity entity : entities) {
             ClientConnection clientConnection = new ClientConnection(
                     entity.getConnectionSource(),
-                    entity.getConnectionTime(),
+                    new Date(entity.getConnectionTime()),
                     entity.getClientBrowser());
             connections.add(clientConnection);
         }
@@ -32,7 +33,7 @@ public class ConnectionEntityAdapter implements Adapter<ClientConnection, Client
         ClientConnectionEntity entity = new ClientConnectionEntity();
         entity.setConnectionSource(clientConnection.getConnectionSource());
         entity.setClientBrowser(clientConnection.getClientAgent());
-        entity.setConnectionTime(clientConnection.getConnectionTime());
+        entity.setConnectionTime(clientConnection.getConnectionTime().getTime());
         return entity;
     }
 }
