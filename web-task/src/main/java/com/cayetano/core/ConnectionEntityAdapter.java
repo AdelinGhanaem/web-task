@@ -26,4 +26,13 @@ public class ConnectionEntityAdapter implements Adapter<ClientConnection, Client
         }
         return connections;
     }
+
+    @Override
+    public ClientConnectionEntity from(ClientConnection clientConnection) {
+        ClientConnectionEntity entity = new ClientConnectionEntity();
+        entity.setConnectionSource(clientConnection.getConnectionSource());
+        entity.setClientBrowser(clientConnection.getClientAgent());
+        entity.setConnectionTime(clientConnection.getConnectionTime());
+        return entity;
+    }
 }

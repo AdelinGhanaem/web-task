@@ -1,7 +1,7 @@
 package com.cayetano.web;
 
 import com.cayetano.core.ClientConnection;
-import com.cayetano.core.UserConnectionsService;
+import com.cayetano.core.ClientConnectionsService;
 import org.jmock.Expectations;
 import org.jmock.Mockery;
 import org.junit.Before;
@@ -10,18 +10,18 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersConnectionsControllerTest {
+public class ClientConnectionsControllerTest {
 
 
     private Mockery context = new Mockery();
 
-    private UserConnectionsService service;
-    private UsersConnectionsController controller;
+    private ClientConnectionsService service;
+    private ClientConnectionsController controller;
 
     @Before
     public void setUp() throws Exception {
-        service            = context.mock(UserConnectionsService.class);
-        controller = new UsersConnectionsController(service);
+        service            = context.mock(ClientConnectionsService.class);
+        controller = new ClientConnectionsController(service);
 
     }
 
@@ -30,7 +30,7 @@ public class UsersConnectionsControllerTest {
         final int pageNumber = 1;
         final List<ClientConnection> expectedConnections = new ArrayList<>();
         context.checking(new Expectations() {{
-            oneOf(service).getConnectionsByPage(pageNumber);
+//            oneOf(service).getAllConnections(pageNumber);
             will(returnValue(expectedConnections));
         }});
 

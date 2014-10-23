@@ -9,12 +9,12 @@ public final class ClientConnection {
 
     private String connectionSource;
     private Date connectionTime;
-    private String clientBrowser;
+    private String clientAgent;
 
-    public ClientConnection(String connectionSource, Date connectionTime, String clientBrowser) {
+    public ClientConnection(String connectionSource, Date connectionTime, String clientAgent) {
         this.connectionSource = connectionSource;
         this.connectionTime = connectionTime;
-        this.clientBrowser = clientBrowser;
+        this.clientAgent = clientAgent;
     }
 
 
@@ -26,7 +26,16 @@ public final class ClientConnection {
         return connectionTime;
     }
 
-    public String getClientBrowser() {
-        return clientBrowser;
+    public String getClientAgent() {
+        return clientAgent;
+    }
+
+    @Override
+    public String toString() {
+        return "ClientConnection{" +
+                "connectionSource='" + connectionSource + '\'' +
+                ", connectionTime=" + connectionTime +
+                ", clientAgent='" + clientAgent + '\'' +
+                '}';
     }
 }

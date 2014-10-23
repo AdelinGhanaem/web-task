@@ -3,6 +3,7 @@ package com.cayetano.persistense;
 import com.cayetano.core.ClientConnection;
 import com.cayetano.persistense.entities.ClientConnectionEntity;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,5 +18,7 @@ public interface UserConnectionsRepository {
     void saveConnection(ClientConnectionEntity entity);
 
 
-    List<ClientConnectionEntity> getConnectionsPage(int pageNumber);
+    List<ClientConnectionEntity> getConnections();
+
+    List<ClientConnectionEntity> getConnectionBetween(Date start, Date end);
 }

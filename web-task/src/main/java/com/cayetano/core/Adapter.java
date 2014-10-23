@@ -11,4 +11,5 @@ public interface Adapter<T, E> {
     List<T> to(List<E> e);
 
 
+    E from(T t);
 }

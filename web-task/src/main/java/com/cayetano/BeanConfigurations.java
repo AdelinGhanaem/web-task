@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Configuration
 @EnableTransactionManagement
 @EnableWebMvc
-@Import({CoreConfigurations.class,PersistenceConfigurations.class,WebConfigurations.class})
+@Import({WebConfigurations.class,CoreConfigurations.class,PersistenceConfigurations.class})
 public class BeanConfigurations {
 
 }
